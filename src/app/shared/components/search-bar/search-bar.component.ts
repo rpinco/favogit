@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GithubService } from '../../services/github.service';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, map } from 'rxjs/operators';
 import { fromEvent } from 'rxjs';
+import { UsersService } from '../../services/users.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class SearchBarComponent implements OnInit {
 
   search = '';
 
-  constructor(private githubService: GithubService) { }
+  constructor(private githubService: GithubService, private usersService: UsersService) { }
 
   ngOnInit() {
 
@@ -34,8 +35,9 @@ export class SearchBarComponent implements OnInit {
 
 
   onSearch() {
-    this.githubService.getUsers(this.search).subscribe(data => {
-      
+    this.githubService.getUsers(this.search)
+    .subscribe(data => {
+      this.usersService.setUsers(data);
     });
   }
 }
