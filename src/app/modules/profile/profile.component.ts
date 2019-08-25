@@ -34,10 +34,8 @@ export class ProfileComponent implements OnInit {
   }
 
   addFavorite(username) {
-    console.log("elusername" ,username);
     const newFavorite = new Favorite();
     newFavorite.username = username;
-    console.log("what", newFavorite);
 
     this.favoriteStore.dispatch(addFavoriteAction(newFavorite));
   }

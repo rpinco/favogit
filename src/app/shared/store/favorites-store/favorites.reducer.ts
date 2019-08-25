@@ -27,7 +27,7 @@ export const initializeState =  () => {
 
 
 // Create the actions for setting up and retrieving the list
-export const addFavoriteAction = createAction('[Favorite] Add Favorite', props<Favorite>());
+export const addFavoriteAction = createAction('[Favorite] Add Favorite', (state: FavoriteState, payload: Favorite) => ({payload}));
 export const getFavoritesAction = createAction('[Favorite] Get Favorite');
 export const removeFavoritesAction = createAction('[Favorite] Delete Favorite', props<Favorite>());
 
