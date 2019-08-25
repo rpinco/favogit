@@ -6,7 +6,7 @@
 
 <div id="contents" class="contents" *ngIf="rows.length > 0">
         <ngx-datatable
-        class="bootstrap"
+        class="material"
         [rows]="rows"
         [loadingIndicator]="loadingIndicator"
         [columns]="columns"
@@ -22,10 +22,6 @@
 
 </div>
 
-<ng-template #avatarTemplate let-value="imgsrc" ngx-datatable-cell-template>
-    <img src="{{imgsrc}}" style="max-width: 100%" />
-</ng-template>
-
-<ng-template #favTemplate let-value="imgsrc" ngx-datatable-cell-template>
-        <fa-icon icon="star"></fa-icon>
+<ng-template #favTemplate ngx-datatable-cell-template>
+        <div class='icon-center'><fa-icon icon="star" style='color: gold;'></fa-icon></div>
     </ng-template>

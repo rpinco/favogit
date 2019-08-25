@@ -13,14 +13,19 @@
     padding-top: 15rem;
 }
 
-ngx-datatable {
-    font-size: 13px;
-    display: block;
-    overflow: hidden;
-    justify-content: center;
+// .ngx-datatable {
+//     font-size: 13px;
+//     display: block;
+//     overflow: hidden;
+//     justify-content: center;
+//     position: relative;
+//     text-align: left;
+//     width: 75%;
+//     margin: 0 auto;
+//     border: 1px solid gray;
+// }
+
+.icon-center {
     position: relative;
-    text-align: left;
-    width: 75%;
-    margin: 0 auto;
-    border: 1px solid gray;
+    left: 50%;
 }

@@ -12,13 +12,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('favTemplate', { static: true }) favTemplate: TemplateRef<any>;
 
   search = '';
-  columns = [
-    {prop: 'avatar_url', cellTemplate: this.avatarTemplate},
-    {name: 'Login'},
-    {name: 'Score'},
-    {name: 'Url'},
-    {name: 'Favorite', cellTemplate: this.favTemplate}
-  ];
+  columns = [];
   rows = [];
   loadingIndicator = true;
 
@@ -26,7 +20,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.columns = [
+      {name: 'Login'},
+      {name: 'Score'},
+      {name: 'Url'},
+      {name: 'Favorite', cellTemplate: this.favTemplate}
+    ];
   }
 
   // tslint:disable-next-line: use-life-cycle-interface
