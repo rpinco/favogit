@@ -1,0 +1,23 @@
+.profile {
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    justify-content: center;
+    padding-top: 5rem;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.center-image {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    justify-content: center;
+}
+
+.center-buttons {
+    position: relative;
+    left:10%;
+}

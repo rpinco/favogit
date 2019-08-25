@@ -25,7 +25,7 @@ export class SearchBarComponent implements OnInit {
   ngAfterViewInit() {
 
     fromEvent(this.searchinput.nativeElement, 'keyup').pipe(
-      debounceTime(1000)
+      debounceTime(500)
     )
     .subscribe(() => {
       this.onSearch();

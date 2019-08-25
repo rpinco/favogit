@@ -6,7 +6,7 @@ import { FavoritesComponent } from './modules/favorites/favorites.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'profile/:id', component: ProfileComponent},
+  {path: 'profile/:username', component: ProfileComponent},
   {path: 'favorites', component: FavoritesComponent}
 ];
 
@@ -14,4 +14,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+}

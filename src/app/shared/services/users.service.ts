@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
 import { User } from '../store/users';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  userList: User[];
+  private userSubject = new BehaviorSubject([]);
+  userList: Observable<User[]> = this.userSubject.asObservable();
 
-  constructor() { }
+  constructor() {}
 
-
-  setUsers(users: User[]) {
-    this.userList = users;
-  }
-
-  getUsers(): User[] {
-    return this.userList;
+  setUsers(userdata) {
+    this.userSubject.next(userdata);
   }
 }

@@ -1,15 +1,31 @@
-Use the search bar to find a user!
 
+    <div id="help-tip" *ngIf="rows.length == 0" class="row m-1">
+        Use the search bar to find a user!
+    </div>
+    
 
-<ngx-datatable 
-class="bootstrap"
-[rows]="rows"
-[loadingIndicator]="loadingIndicator"
-[columns]="columns"
-[columnMode]="'force'"
-[headerHeight]="50"
-[footerHeight]="50"
-[rowHeight]="'auto'"
-[reorderable]="reorderable">
+<div id="contents" class="contents" *ngIf="rows.length > 0">
+        <ngx-datatable
+        class="bootstrap"
+        [rows]="rows"
+        [loadingIndicator]="loadingIndicator"
+        [columns]="columns"
+        [columnMode]="'force'"
+        [headerHeight]="40"
+        [footerHeight]="40"
+        [limit]="20"
+        [selectionType]="'single'"
+        [rowHeight]="'auto'"
+        [reorderable]="reorderable"
+        (select)='onSelect($event)'>
+      </ngx-datatable>
 
-</ngx-datatable>
+</div>
+
+<ng-template #avatarTemplate let-value="imgsrc" ngx-datatable-cell-template>
+    <img src="{{imgsrc}}" style="max-width: 100%" />
+</ng-template>
+
+<ng-template #favTemplate let-value="imgsrc" ngx-datatable-cell-template>
+        <fa-icon icon="star"></fa-icon>
+    </ng-template>

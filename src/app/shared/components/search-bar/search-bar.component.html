@@ -4,10 +4,12 @@
           <input style="width:50rem" 
                  type="text" 
                  name="searchbar" #searchbar id="searchbar" class="form-control" [(ngModel)]="search" placeholder="Github Username">
-          <button type="button" class="btn btn-secondary"><fa-icon icon="search"></fa-icon></button>
+          <button type="button" [routerLink]="['/']" class="btn btn-secondary"><fa-icon icon="search"></fa-icon></button>
       </div>
     </div>
-    <div class="form-group">
-      <fa-icon icon="star" size="lg" style="color:gold"></fa-icon>
+    <div class="fav-button form-group">
+      <a class="" [routerLink]="['/favorites']">
+        <fa-icon icon="star" size="lg" style="color:gold;padding:8px"></fa-icon>
+      </a>
     </div>
 </form>

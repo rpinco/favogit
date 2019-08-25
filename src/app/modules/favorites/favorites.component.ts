@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { FavoriteState, getFavoritesAction, Favorite } from 'src/app/shared/store/favorites-store/favorites.reducer';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-favorites',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor() { }
+  favorite$: Observable<FavoriteState>;
+  FavoriteSubscription: Subscription;
+  favoritesList: Favorite[];
+
+
+  constructor(private favoriteStore: Store<FavoriteState>) {
+    this.favorite$ = this.favoriteStore.select('favorites');
+
+  }
 
   ngOnInit() {
+
+    this.favorite$.subscribe(
+      response => {
+        this.favoritesList = response.favoriteList;
+      }
+    );
+
+    this.favoriteStore.dispatch(getFavoritesAction());
   }
 
 }

@@ -1,3 +1,19 @@
-<p>
-  favorites works!
-</p>
+
+<div id="contents" class="contents" >
+   
+    <div class="card" style="width: 30rem;" *ngIf="favoritesList.length > 0">
+      <ul class="list-group list-group-flush" >
+        <li class="list-group-item" *ngFor="let fav of favoritesList">
+          <span>{{fav.username}} </span> <button class="btn btn-danger">Remove from favorites</button>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="card" style="width: 30rem;" *ngIf="favoritesList.length == 0">
+      <div class="card-body">
+        <p>No favorites selected yet!</p>
+      </div>
+    </div>
+
+
+</div>

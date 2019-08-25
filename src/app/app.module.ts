@@ -9,6 +9,8 @@ import { HomeModule } from './modules/home/home.module';
 import { FavoritesModule } from './modules/favorites/favorites.module';
 import { SharedModule } from './shared/modules/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { favoriteReducer } from './shared/store/favorites-store/favorites.reducer';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot({favorites: favoriteReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

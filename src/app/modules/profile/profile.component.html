@@ -1,3 +1,46 @@
-<p>
-  profile works!
-</p>
+
+<div class="profile shadow">
+
+  <div class="row">
+      <div class="col-sm-12 mb-5">
+        <div class="card" style="width:50rem">
+          <div class="center-image">
+            <img src="{{profile.avatar_url}}"  class="card-img-top" style="max-width:200px;"/>
+          </div>
+          <div class="card-body">
+            <div class="center-buttons">
+              <a class="mr-2" href="{{profile.html_url}}" >
+                <button class="col-5 btn btn-primary">
+                  Go to github page</button>
+              </a>
+              <a class="" style="cursor:pointer;" >
+                  <button class="col-5 btn btn-primary" (click)="addFavorite(profile.login)">Add to Favorites</button>
+                </a>
+              </div>
+          </div>
+          <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <label class="label">Username: </label><span class="card-text ml-1">{{profile.login}}</span>
+                </li>
+                <li class="list-group-item">
+                  <label class="label">Name: </label><span class="card-text ml-1">{{(profile.name)? profile.name : 'N/A'}}</span>
+                </li>
+                <li class="list-group-item">
+                  <label class="label">Email: </label><span class="card-text ml-1">{{(profile.email) ? profile.email : 'N/A'}}</span>
+                </li>
+                <li class="list-group-item">
+                  <label class="label">Company: </label><span class="card-text ml-1">{{(profile.company) ? profile.company : 'N/A'}}</span>
+                </li>
+                <li class="list-group-item">
+                  <label class="label">Followers: </label><span class="card-text ml-1">{{profile.followers}}</span>  
+                </li>
+                <li class="list-group-item">
+                  <label class="label">Following: </label><span class="card-text ml-1">{{profile.following}}</span>
+                  </li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+@import '../../../../node_modules/@swimlane/ngx-datatable/release/index.css';
+@import '../../../../node_modules/@swimlane/ngx-datatable/release/themes/material.css';
+@import '../../../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css';
+
+.contents {
+    margin: 1em;
+}
+
+#help-tip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15rem;
+}
+
+ngx-datatable {
+    font-size: 13px;
+    display: block;
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    text-align: left;
+    width: 75%;
+    margin: 0 auto;
+    border: 1px solid gray;
+}
