@@ -5,6 +5,7 @@ import { pipe } from 'rxjs';
 import { GithubService } from 'src/app/shared/services/github.service';
 import { Store } from '@ngrx/store';
 import { FavoriteState, Favorite, addFavoriteAction } from 'src/app/shared/store/favorites-store/favorites.reducer';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -25,13 +26,16 @@ export class HomeComponent implements OnInit {
   currentPage = 1;
 
   constructor(
-    private usersService: UsersService, private favoriteStore: Store<FavoriteState>, private router: Router, private githubService: GithubService
+    private usersService: UsersService,
+    private favoriteStore: Store<FavoriteState>,
+    private router: Router,
+    private githubService: GithubService
     ) {
   }
 
   ngOnInit() {
     this.total = -1;
-
+ 
     this.columns = [
       {name: 'Login'},
       {name: 'Score'},
@@ -44,9 +48,18 @@ export class HomeComponent implements OnInit {
   ngAfterContentInit(): void {
 
     this.usersService.userList.subscribe(data => {
+      console.log(data);
+      if (data.length > 0) {
+        this.rows = data[0].items;
+        this.total = data[0].total_count;
+      }
+    });
+      
+      
+      /*data => {
       this.rows = data.items;
       this.total = data.total;
-    });
+    });*/
   }
 
   onSelect(selected) {

@@ -91,7 +91,7 @@ export class GithubService {
       map(res => {
         return {
           items: res.items,
-          total: res.total_count
+          total_count: res.total_count
         };
       })
     );

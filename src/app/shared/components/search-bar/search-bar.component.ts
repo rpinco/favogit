@@ -37,7 +37,7 @@ export class SearchBarComponent implements OnInit {
   onSearch() {
     this.githubService.getUsers(this.search)
     .subscribe(data => {
-      this.usersService.setUsers(data);
+      this.usersService.setUsers([data]);
     });
   }
 }
