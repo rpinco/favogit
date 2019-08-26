@@ -8,7 +8,7 @@ import { SearchResponse } from './github.service';
 })
 export class UsersService {
 
-  private userSubject = new BehaviorSubject([]);
+  private userSubject = new BehaviorSubject<SearchResponse[]>([]);
   userList: Observable<SearchResponse[]> = this.userSubject.asObservable();
 
   constructor() {}

@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.total = -1;
- 
+
     this.columns = [
       {name: 'Login'},
       {name: 'Score'},
@@ -54,12 +54,7 @@ export class HomeComponent implements OnInit {
         this.total = data[0].total_count;
       }
     });
-      
-      
-      /*data => {
-      this.rows = data.items;
-      this.total = data.total;
-    });*/
+
   }
 
   onSelect(selected) {
