@@ -1,24 +1,59 @@
 
-    <div id="help-tip" *ngIf="rows.length == 0" class="row m-1">
+    <div id="help-tip" *ngIf="!total && total != 0" class="row m-1">
         Use the search bar to find a user!
+    </div>
+
+    <div id="help-tip" *ngIf="total == 0" class="row m-1">
+        No results found!
     </div>
     
 
-<div id="contents" class="contents" *ngIf="rows.length > 0">
-        <ngx-datatable
-        class="material"
-        [rows]="rows"
-        [loadingIndicator]="loadingIndicator"
-        [columns]="columns"
-        [columnMode]="'force'"
-        [headerHeight]="40"
-        [footerHeight]="40"
-        [limit]="20"
-        [selectionType]="'single'"
-        [rowHeight]="'auto'"
-        [reorderable]="reorderable"
-        (select)='onSelect($event)'>
-      </ngx-datatable>
+<div id="contents" class="contents" *ngIf="total > 0">
+
+    <div>
+        <div class="d-flex justify-content-between mb-4">
+            <div class="">
+                <span>Total count: {{total}}</span>
+            </div>
+            <div class="">
+                <button class="btn btn-dark mr-2" *ngIf="currentPage > 1" (click)="getPreviousPage()">
+                    <fa-icon icon="caret-left"></fa-icon>&nbsp;Previous
+                </button>
+                <button class="btn btn-dark" *ngIf="currentPage*20 < total" (click)="getNextPage()">Next&nbsp;
+                    <fa-icon icon="caret-right"></fa-icon>
+                </button>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Avatar</th>
+                    <th scope="col" (click)="sortByLogin()" class="selectable">
+                        Login Name 
+                        <fa-icon *ngIf="loginSort == 'desc'" icon="caret-down"></fa-icon>
+                        <fa-icon *ngIf="loginSort == 'asc'" icon="caret-down"></fa-icon>
+                    <th scope="col" (click)="sortByScore()">
+                        User Score 
+                        <fa-icon *ngIf="searchDesc" icon="caret-down"></fa-icon>
+                        <fa-icon *ngIf="!searchDesc" icon="caret-down"></fa-icon>
+                     </th>
+                    <th scope="col">Github URL</th>
+                    <th scope="col">Favorite</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of rows" (click)="onSelect(row.login)">
+                    <td><img src="{{row.avatar_url}}" style="max-width:50px;"></td>
+                    <td>{{row.login}}</td>
+                    <td>{{row.score}}</td>
+                    <td><a href="{{row.html_url}}">{{row.html_url}}</a></td>
+                    <td><div class='icon-center'><button class="btn btn-primary" (click)="addFavorite(row.login, row.id, $event)"><fa-icon icon="star" style='color: gold;'></fa-icon></button></div></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
 
 </div>
 

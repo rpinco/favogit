@@ -40,10 +40,12 @@ const favoritesReducer = createReducer(initialState,
         return adapter.removeOne(favorite.username, state);
     }),
     on(addFavoriteAction, (state: FavoriteState, favorite: Favorite) => {
-        console.log('que es esto', favorite, 'y el estado', state);
         return adapter.addOne(favorite, state);
     })
 );
+
+export const selectAllFavoritesState = (state: FavoriteState) => state;
+export const {selectAll} = adapter.getSelectors();
 
 
 export function favoriteReducer(state: FavoriteState | undefined, action: Action) {

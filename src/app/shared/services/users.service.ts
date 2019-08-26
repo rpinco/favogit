@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../store/users';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { SearchResponse } from './github.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class UsersService {
 
   private userSubject = new BehaviorSubject([]);
-  userList: Observable<User[]> = this.userSubject.asObservable();
+  userList: Observable<SearchResponse[]> = this.userSubject.asObservable();
 
   constructor() {}
 

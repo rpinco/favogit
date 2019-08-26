@@ -5,6 +5,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
   exports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     NgxDatatableModule,
     FontAwesomeModule,
   ]
