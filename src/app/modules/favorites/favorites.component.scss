@@ -1,16 +1,7 @@
 .contents {
     margin: 1em;
 }
-
-
-ngx-datatable {
-    font-size: 13px;
-    display: block;
-    overflow: hidden;
-    justify-content: center;
-    position: relative;
-    text-align: left;
-    width: 75%;
-    margin: 0 auto;
-    border: 1px solid gray;
+.fav-list {
+    display: flex;
+    align-items: center;
 }

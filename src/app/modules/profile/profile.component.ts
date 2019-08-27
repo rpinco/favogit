@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GithubService } from 'src/app/shared/services/github.service';
-import { FavoriteState, addFavoriteAction, Favorite } from 'src/app/shared/store/favorites-store/favorites.reducer';
+import { FavoriteState, addFavoriteAction, Favorite, selectAllFavorites, getFavoritesAction, removeFavoritesAction } from 'src/app/shared/store/favorites-store/favorites.reducer';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
@@ -13,6 +13,7 @@ import { Observable, Subscription } from 'rxjs';
 export class ProfileComponent implements OnInit {
 
   FavoriteSubscription: Subscription;
+  favorite$: Observable<Favorite[]>;
   profile: {};
 
 
@@ -31,6 +32,9 @@ export class ProfileComponent implements OnInit {
       });
     });
 
+    this.favorite$  = this.favoriteStore.pipe(select(selectAllFavorites));
+    this.favoriteStore.dispatch(getFavoritesAction());
+
   }
 
   addFavorite(username, id) {
@@ -38,7 +42,16 @@ export class ProfileComponent implements OnInit {
     newFavorite.username = username;
     newFavorite.id = id;
 
-    this.favoriteStore.dispatch(addFavoriteAction(newFavorite));
+    this.favoriteStore.dispatch(addFavoriteAction({ favorite: newFavorite }));
   }
+
+  removeFavorite(username, id) {
+    const newFavorite = new Favorite();
+    newFavorite.username = username;
+    newFavorite.id = id;
+
+    this.favoriteStore.dispatch(removeFavoritesAction({favorite: newFavorite}));
+  }
+
 
 }

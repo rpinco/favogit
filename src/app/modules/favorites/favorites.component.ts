@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { FavoriteState, getFavoritesAction, Favorite, selectAll } from 'src/app/shared/store/favorites-store/favorites.reducer';
+import { FavoriteState, getFavoritesAction, Favorite, selectAllFavorites, removeFavoritesAction } from 'src/app/shared/store/favorites-store/favorites.reducer';
 import { Store, select } from '@ngrx/store';
 
 @Component({
@@ -17,22 +17,19 @@ export class FavoritesComponent implements OnInit {
 
   constructor(private favoriteStore: Store<FavoriteState>) {
 
-    // const favList = selectors.selectAll(this.favoriteStore);
-    //const  favlist  = this.favoriteStore.pipe(select(selectors.selectAll));
-    //console.log(favlist);
-    this.favorite$ = this.favoriteStore.pipe(select(selectAll));
+
+    this.favorite$  = this.favoriteStore.pipe(select(selectAllFavorites));
+    this.favoriteStore.dispatch(getFavoritesAction());
 
   }
 
   ngOnInit() {
 
-    // this.favorite$.subscribe(
-    //   response => {
-    //     this.favoritesList = response.favoriteList;
-    //   }
-    // );
-
     this.favoriteStore.dispatch(getFavoritesAction());
+  }
+
+  removeFavorite(selected: Favorite) {
+    this.favoriteStore.dispatch(removeFavoritesAction({favorite: selected}));
   }
 
 }

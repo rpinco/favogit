@@ -14,13 +14,16 @@
           <div class="card-body">
             <div class="center-buttons">
               <a class="mr-2" href="{{profile.html_url}}" >
-                <button class="col-5 btn btn-primary">
+                <button class="col-3 btn btn-primary">
                   Go to github page</button>
               </a>
-              <a class="" style="cursor:pointer;" >
-                  <button class="col-5 btn btn-primary" (click)="addFavorite(profile.login, profile.id)">Add to Favorites</button>
+              <a class="mr-2" style="cursor:pointer;" >
+                  <button class="col-3 btn btn-primary" (click)="addFavorite(profile.login, profile.id)">Add to Favorites</button>
                 </a>
-              </div>
+                <a class="" style="cursor:pointer;" >
+                  <button class="col-3 btn btn-danger"  (click)="removeFavorite(profile.login, profile.id)">Remove from Favorite</button>
+                </a>
+            </div>
           </div>
           <div class="card-body">
               <ul class="list-group list-group-flush">

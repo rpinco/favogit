@@ -96,7 +96,7 @@ export class HomeComponent implements OnInit {
     newFavorite.username = username;
     newFavorite.id = id;
 
-    this.favoriteStore.dispatch(addFavoriteAction(newFavorite));
+    this.favoriteStore.dispatch(addFavoriteAction({ favorite: newFavorite }));
   }
 
 

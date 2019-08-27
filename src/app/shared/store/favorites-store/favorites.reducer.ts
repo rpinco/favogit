@@ -1,5 +1,5 @@
 
-import { createAction, createReducer, on, Action, props, State } from '@ngrx/store';
+import { createAction, createReducer, on, Action, props, State, createFeatureSelector, createSelector } from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 
 // TODO: This could be improved by splitting the action/interfaces/states in different files
@@ -27,25 +27,33 @@ export class Favorite {
 
 // Create the actions for setting up and retrieving the list
 // export const addFavoriteAction = createAction('[Favorite] Add Favorite', (payload: Favorite) => ({payload}));
-export const addFavoriteAction = createAction('[Favorite] Add Favorite', props<Favorite>());
+export const addFavoriteAction = createAction('[Favorite] Add Favorite', props<{favorite: Favorite}>());
 export const getFavoritesAction = createAction('[Favorite] Get Favorite');
-export const removeFavoritesAction = createAction('[Favorite] Delete Favorite', props<Favorite>());
+export const removeFavoritesAction = createAction('[Favorite] Delete Favorite', props<{favorite: Favorite}>());
 
 export const initialState = adapter.getInitialState();
 
 // And finally, the reducer
 const favoritesReducer = createReducer(initialState,
     on(getFavoritesAction, state => state),
-    on(removeFavoritesAction, (state: FavoriteState, favorite: Favorite) => {
-        return adapter.removeOne(favorite.username, state);
+    on(removeFavoritesAction, (state: FavoriteState, { favorite }: { favorite: Favorite }) => {
+        return adapter.removeOne(favorite.id, state);
     }),
-    on(addFavoriteAction, (state: FavoriteState, favorite: Favorite) => {
+    on(addFavoriteAction, (state: FavoriteState, { favorite }: { favorite: Favorite }) => {
         return adapter.addOne(favorite, state);
-    })
+})
 );
 
-export const selectAllFavoritesState = (state: FavoriteState) => state;
-export const {selectAll} = adapter.getSelectors();
+const {
+    selectIds,
+    selectEntities,
+    selectAll,
+    selectTotal,
+  } = adapter.getSelectors();
+
+  export const selectFavoritesState = createFeatureSelector('favorites');
+
+export const selectAllFavorites = createSelector(selectFavoritesState, selectAll);
 
 
 export function favoriteReducer(state: FavoriteState | undefined, action: Action) {
