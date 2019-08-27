@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { FavoriteState, getFavoritesAction, Favorite, selectAllFavorites, removeFavoritesAction } from 'src/app/shared/store/favorites-store/favorites.reducer';
+import {
+  FavoriteState,
+  getFavoritesAction,
+  Favorite,
+  selectAllFavorites,
+  removeFavoritesAction
+} from 'src/app/shared/store/favorites-store/favorites.reducer';
 import { Store, select } from '@ngrx/store';
 
 @Component({

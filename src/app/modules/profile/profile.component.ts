@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GithubService } from 'src/app/shared/services/github.service';
-import { FavoriteState, addFavoriteAction, Favorite, selectAllFavorites, getFavoritesAction, removeFavoritesAction } from 'src/app/shared/store/favorites-store/favorites.reducer';
+import { FavoriteState,
+         addFavoriteAction,
+         Favorite,
+         selectAllFavorites,
+         getFavoritesAction,
+         removeFavoritesAction
+        } from 'src/app/shared/store/favorites-store/favorites.reducer';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 

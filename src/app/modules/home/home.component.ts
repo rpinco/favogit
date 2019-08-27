@@ -48,7 +48,6 @@ export class HomeComponent implements OnInit {
   ngAfterContentInit(): void {
 
     this.usersService.userList.subscribe(data => {
-      console.log(data);
       if (data.length > 0) {
         this.rows = data[0].items;
         this.total = data[0].total_count;

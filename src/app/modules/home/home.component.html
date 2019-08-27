@@ -1,9 +1,9 @@
 
-    <div id="help-tip" *ngIf="total == -1" class="row m-1">
+    <div id="help-tip" *ngIf="total === -1" class="row m-1">
         Use the search bar to find a user!
     </div>
 
-    <div id="help-tip" *ngIf="total == 0" class="row m-1">
+    <div id="help-tip" *ngIf="total === 0" class="row m-1">
         No results found!
     </div>
     
@@ -30,8 +30,8 @@
                     <th scope="col">Avatar</th>
                     <th scope="col" (click)="sortByLogin()" class="selectable">
                         Login Name 
-                        <fa-icon *ngIf="loginSort == 'desc'" icon="caret-down"></fa-icon>
-                        <fa-icon *ngIf="loginSort == 'asc'" icon="caret-down"></fa-icon>
+                        <fa-icon *ngIf="loginSort === 'desc'" icon="caret-down"></fa-icon>
+                        <fa-icon *ngIf="loginSort === 'asc'" icon="caret-down"></fa-icon>
                     <th scope="col" (click)="sortByScore()">
                         User Score 
                         <fa-icon *ngIf="searchDesc" icon="caret-down"></fa-icon>

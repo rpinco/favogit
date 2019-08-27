@@ -57,6 +57,5 @@ export const selectAllFavorites = createSelector(selectFavoritesState, selectAll
 
 
 export function favoriteReducer(state: FavoriteState | undefined, action: Action) {
-    console.log('state', state, 'action', action);
     return favoritesReducer(state, action);
 }
